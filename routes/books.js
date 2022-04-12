@@ -39,8 +39,7 @@ router.post('/', async (req, res) => {
     const book = new Book({
         title: req.body.title,
         author: req.body.author,
-        publishDate: new Date(req.body.publishDate),
-        pageCount: req.body.pageCount,
+        copies: req.body.copies,
         description: req.body.description
     })
     saveCover(book, req.body.cover)
@@ -81,8 +80,7 @@ router.put('/:id', async (req, res) => {
         book = await Book.findById(req.params.id)
         book.title = req.body.title
         book.author = req.body.author
-        book.publishDate = new Date(req.body.publishDate)
-        book.pageCount = req.body.pageCount
+        book.copies = req.body.copies
         book.description = req.body.description
         if (req.body.cover != null && req.body.cover !== '') {
             saveCover(book, req.body.cover)

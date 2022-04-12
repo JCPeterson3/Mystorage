@@ -8,11 +8,7 @@ const bookSchema = new mongoose.Schema({
     description: {
         type: String
     },
-    publishDate: {
-        type: Date,
-        reqiured: true
-    },
-    pageCount: {
+    copies: {
         type: Number,
         required: true
     },
@@ -33,6 +29,9 @@ const bookSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         required: true,
         ref: 'Author'
+    },
+    people: {
+        type: Array
     }
 })
 
