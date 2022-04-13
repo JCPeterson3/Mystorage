@@ -1,0 +1,5 @@
+<h2 class="page-header"><%= person.name %></h2>
+<div class="btn-row">
+    <a class="btn btn-primary" href="/people/<%= person.id %>/edit">Edit</a>
+    <%- include('../partials/deleteForm', { url: `/people/${person.id}`}) %>
+</div>
