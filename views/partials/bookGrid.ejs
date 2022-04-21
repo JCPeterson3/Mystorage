@@ -3,8 +3,9 @@
 
 <div class="book-grid <%= bookGridClass %>">
     <% books.forEach(book => { %>
+        <% bookBorder = locals.peopleCheck && book.person.length > 1 ? 'book-cover-border' : ''%>
         <a href="/books/<%= book.id %>">
-            <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+            <img class="<%= bookCoverClass %> <%= bookBorder %>" src="<%= book.coverImagePath %>">
             <label><%= book.title %></label>
         </a>
     <% }) %>

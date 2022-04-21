@@ -3,3 +3,7 @@
     <a class="btn btn-primary" href="/people/<%= person.id %>/edit">Edit</a>
     <%- include('../partials/deleteForm', { url: `/people/${person.id}`}) %>
 </div>
+<% if (booksPersonWants.length > 0) { %>
+    <h2 class="page-header"><%= person.name %> Wants These Books</h2>
+    <%- include('../partials/bookGrid', { books: booksPersonWants, peopleCheck: true }) %>
+<% } %>

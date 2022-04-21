@@ -84,6 +84,10 @@
     line-height: 150%;
 }
 
+.person-link {
+    color: var(--color-text-light);
+}
+
 .modal {
     position: fixed;
     left: 0;

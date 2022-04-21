@@ -45,8 +45,10 @@ router.post('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const person = await Person.findById(req.params.id)
+        const books = await Book.find({ person: person.id }).exec()
         res.render('people/show', {
-            person: person
+            person: person,
+            booksPersonWants: books
         })
     } catch {
         res.redirect('/')

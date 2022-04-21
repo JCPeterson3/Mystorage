@@ -7,11 +7,17 @@
 .book-cover {
     width: var(--book-cover-width);
     height: calc(var(--book-cover-width) / var(--book-cover-aspect-ratio));
+    
 }
 
 .book-cover-large {
     width: var(--book-cover-width-large);
     height: calc(var(--book-cover-width-large) / var(--book-cover-aspect-ratio));
+}
+
+.book-cover-border {
+    border: 3px solid hsl(var(--color-danger-hue), 100%, 50%);
+    border-radius: 5%;
 }
 
 .book-grid {
