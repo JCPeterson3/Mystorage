@@ -10,7 +10,8 @@ const bookSchema = new mongoose.Schema({
     },
     copies: {
         type: Number,
-        required: true
+        required: true,
+        default: 1
     },
     createdAt: {
         type: Date,
@@ -30,8 +31,9 @@ const bookSchema = new mongoose.Schema({
         required: true,
         ref: 'Author'
     },
-    people: {
-        type: Array
+    person: {
+        type: [mongoose.Schema.Types.ObjectId],
+        ref: 'Person'
     }
 })
 

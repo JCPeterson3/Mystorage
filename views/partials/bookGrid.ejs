@@ -4,7 +4,9 @@
 <div class="book-grid <%= bookGridClass %>">
     <% books.forEach(book => { %>
         <a href="/books/<%= book.id %>">
+            <!-- TODO: Need to make below have better CSS -->
             <img class="book-cover <%= bookCoverClass %>" src="<%= book.coverImagePath %>">
+            <label><%= book.title %></label>
         </a>
     <% }) %>
 </div>

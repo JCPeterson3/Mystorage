@@ -7,7 +7,7 @@
         <label>Author</label>
         <select name="author">
         <% authors.forEach(author => { %>
-            <% if (author.id === book.author) { %>
+            <% if (author.id == book.author) { %>
                 <option selected label="<%= author.name %>" value="<%= author.id %>"></option>
             <% } else { %>
                 <option label="<%= author.name %>" value="<%= author.id %>"></option>
@@ -18,13 +18,26 @@
 </div>
 
 <div class="form-row">
-    <!-- <div class="form-item">
-        <label>Publish Date</label>
-        <input type="date" name="publishDate">
-    </div> -->
     <div class="form-item">
         <label>Copies</label>
         <input type="number" name="copies" min="1" value="<%= book.copies %>">
+    </div>
+    <div class="form-item">
+        <label>People</label>
+        <% if(book.person.length > 0) { %>
+            <% if(book.person.length > 1) { %>
+                <input class="modal-trigger" id="modal-trigger" type="button" onclick="toggleModal()" value="<%= book.person.length %> people wants this book">
+            <% } else { %>
+                <% persons.forEach(person => { %>
+                    <% if (book.person.includes(person.id)) { %>
+                        <input class="modal-trigger" id="modal-trigger" type="button" onclick="toggleModal()" value="<%= person.name %>">
+                    <% } %>
+                <% }) %>
+            <% } %>
+        <% } else { %>
+            <input class="modal-trigger" id="modal-trigger" type="button" onclick="toggleModal()" value="No one yet...">
+        <% } %>
+
     </div>
 </div>
 
@@ -36,5 +49,22 @@
     <div class="form-item">
         <label>Description</label>
         <textarea name="description"><%= book.description %></textarea>
+    </div>
+</div>
+
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">x</span>
+        <div>
+            <% persons.forEach(person => { %>
+                <% if (book.person.includes(person.id)) { %>
+                    <input class="personBox" type="checkbox" id="<%= person.id %>" name="persons" value="<%= person.id %>" checked>
+                <% } else { %>
+                    <input class="personBox" type="checkbox" id="<%= person.id %>" name="persons" value="<%= person.id %>">
+                <% } %>
+                <label for="<%= person.id %>"> <%= person.name  %></label>
+                <br>
+            <% }) %>
+        </div>
     </div>
 </div>
