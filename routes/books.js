@@ -9,6 +9,7 @@ const imageMimeTypes = ['image/jpeg', 'image/png', 'image/gif']
 // All Books Route
 router.get('/', async (req, res) => {
     let query = Book.find()
+    const everyBook = await Book.find()
     if (req.query.title != null && req.query.title != '') {
         query = query.regex('title', new RegExp(req.query.title, 'i'))
     }
@@ -17,6 +18,7 @@ router.get('/', async (req, res) => {
         res.render('books/index', {
             books: books,
             searchOptions: req.query,
+            allBooks: everyBook
         })
     } catch {
         res.redirect('/')

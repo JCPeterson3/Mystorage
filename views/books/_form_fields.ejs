@@ -23,7 +23,7 @@
         <input type="number" name="copies" min="1" value="<%= book.copies %>">
     </div>
     <div class="form-item">
-        <label>People</label>
+        <label>Who wants it</label>
         <% if(book.person.length > 0) { %>
             <% if(book.person.length > 1) { %>
                 <input class="modal-trigger" id="modal-trigger" type="button" onclick="toggleModal()" value="<%= book.person.length %> people wants this book">
